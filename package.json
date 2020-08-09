@@ -1,0 +1,25 @@
+{
+  "name": "shiki-core",
+  "version": "0.1.7",
+  "description": "shiki",
+  "keywords": [
+    "shiki",
+    "syntax-highlighter",
+    "highlighter"
+  ],
+  "author": "Pine Wu <octref@gmail.com>",
+  "homepage": "https://github.com/octref/shiki/tree/master/packages/shiki",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dceddia/shiki-core.git"
+  },
+  "dependencies": {
+    "oniguruma": "^7.2.1",
+    "shiki-languages": "dceddia/shiki-languages#master",
+    "shiki-themes": "dceddia/shiki-themes#master",
+    "vscode-textmate": "^5.2.0"
+  }
+}
