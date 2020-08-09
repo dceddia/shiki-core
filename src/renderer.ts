@@ -30,7 +30,6 @@ export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptio
     }
 
     if (l.length > 0) {
-      console.log('color debug', options.debugColors)
       l.forEach(token => {
         let debugInfo = ''
         if (options.debugColors) {

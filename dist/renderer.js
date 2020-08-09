@@ -21,7 +21,6 @@ function renderToHtml(lines, options) {
             html += "<span class=\"hl\">";
         }
         if (l.length > 0) {
-            console.log('color debug', options.debugColors);
             l.forEach(function (token) {
                 var debugInfo = '';
                 if (options.debugColors) {
