@@ -110,6 +110,7 @@ class Shiki {
           options?.debugColors
         )
         return renderToHtml(tokens, {
+          langId: lang,
           bg: this._theme.bg,
           highlightLines: options?.highlightLines,
           debugColors: options?.debugColors

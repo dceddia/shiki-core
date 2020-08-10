@@ -10,10 +10,7 @@ function renderToHtml(lines, options) {
     if (highlightedLines.size) {
         className += ' highlighted';
     }
-    html += "<pre class=\"" + className + "\" style=\"background-color: " + bg + "\">";
-    if (options.langId) {
-        html += "<div class=\"language-id\">" + options.langId + "</div>";
-    }
+    html += "<pre class=\"" + className + "\" style=\"background-color: " + bg + "\" data-language=\"" + options.langId + "\">";
     html += "<code>";
     lines.forEach(function (l, index) {
         var lineNo = index + 1;

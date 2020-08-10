@@ -17,10 +17,7 @@ export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptio
     className += ' highlighted'
   }
 
-  html += `<pre class="${className}" style="background-color: ${bg}">`
-  if (options.langId) {
-    html += `<div class="language-id">${options.langId}</div>`
-  }
+  html += `<pre class="${className}" style="background-color: ${bg}" data-language="${options.langId}">`
   html += `<code>`
 
   lines.forEach((l: any[], index: number) => {

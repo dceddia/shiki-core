@@ -134,6 +134,7 @@ var Shiki = /** @class */ (function () {
                                     }
                                     var tokens = themedTokenizer_1.tokenizeWithTheme(_this._theme, _this._colorMap, code, ltog[lang], options === null || options === void 0 ? void 0 : options.debugColors);
                                     return renderer_1.renderToHtml(tokens, {
+                                        langId: lang,
                                         bg: _this._theme.bg,
                                         highlightLines: options === null || options === void 0 ? void 0 : options.highlightLines,
                                         debugColors: options === null || options === void 0 ? void 0 : options.debugColors
