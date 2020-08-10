@@ -39,7 +39,8 @@ function renderToHtml(lines, options) {
             });
         }
         if (highlightedLines.has(lineNo)) {
-            html += "</span>\n";
+            // Newline goes before the close, so that display:block on the line will work
+            html += "\n</span>";
         }
         else {
             html += "\n";
