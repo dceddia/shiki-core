@@ -11,7 +11,7 @@ import {
 import { Resolver } from './resolver'
 import { getOniguruma } from './onigLibs'
 import { tokenizeWithTheme, IThemedToken } from './themedTokenizer'
-import { renderToHtml } from './renderer'
+import { renderToHtml, makeHighlightSet } from './renderer'
 
 import { getTheme, TTheme, IShikiTheme } from 'shiki-themes'
 
@@ -109,7 +109,9 @@ class Shiki {
           this._colorMap,
           code,
           ltog[lang],
-          options?.debugColors
+          options?.debugColors,
+          // Exclude deleted lines from highlighting, so they don't mess up the surrounding lines
+          options?.deleteLines ? makeHighlightSet(options.deleteLines) : new Set()
         )
         return renderToHtml(tokens, {
           langId: lang,

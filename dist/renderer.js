@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderToHtml = void 0;
+exports.makeHighlightSet = exports.renderToHtml = void 0;
 function renderToHtml(lines, options) {
     if (options === void 0) { options = {}; }
     var bg = options.bg || '#fff';
@@ -96,6 +96,7 @@ function makeHighlightSet(highlightLines) {
     }
     return lines;
 }
+exports.makeHighlightSet = makeHighlightSet;
 function escapeHtml(html) {
     return (html
         .replace(/&/g, '&amp;')

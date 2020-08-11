@@ -12,4 +12,4 @@ export interface IThemedToken {
     color?: string;
     explanation?: IThemedTokenExplanation[];
 }
-export declare function tokenizeWithTheme(theme: IRawTheme, colorMap: string[], fileContents: string, grammar: IGrammar, includeExplanations?: boolean): IThemedToken[][];
+export declare function tokenizeWithTheme(theme: IRawTheme, colorMap: string[], fileContents: string, grammar: IGrammar, includeExplanations?: boolean, ignoreLines?: Set<number>): IThemedToken[][];

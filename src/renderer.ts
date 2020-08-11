@@ -92,8 +92,8 @@ function commaSeparatedLinesToArray(lineList: string) {
   })
 }
 
-function makeHighlightSet(highlightLines?: (string | number)[]) {
-  const lines = new Set()
+export function makeHighlightSet(highlightLines?: (string | number)[]): Set<number> {
+  const lines = new Set<number>()
 
   if (!highlightLines) {
     return lines

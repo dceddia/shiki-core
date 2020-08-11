@@ -132,7 +132,9 @@ var Shiki = /** @class */ (function () {
                                     if (!ltog[lang]) {
                                         throw Error("No language registration for " + lang);
                                     }
-                                    var tokens = themedTokenizer_1.tokenizeWithTheme(_this._theme, _this._colorMap, code, ltog[lang], options === null || options === void 0 ? void 0 : options.debugColors);
+                                    var tokens = themedTokenizer_1.tokenizeWithTheme(_this._theme, _this._colorMap, code, ltog[lang], options === null || options === void 0 ? void 0 : options.debugColors, 
+                                    // Exclude deleted lines from highlighting, so they don't mess up the surrounding lines
+                                    (options === null || options === void 0 ? void 0 : options.deleteLines) ? renderer_1.makeHighlightSet(options.deleteLines) : new Set());
                                     return renderer_1.renderToHtml(tokens, {
                                         langId: lang,
                                         bg: _this._theme.bg,

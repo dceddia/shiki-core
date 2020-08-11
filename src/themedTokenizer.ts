@@ -27,7 +27,8 @@ export function tokenizeWithTheme(
   colorMap: string[],
   fileContents: string,
   grammar: IGrammar,
-  includeExplanations: boolean = true
+  includeExplanations: boolean = true,
+  ignoreLines: Set<number> = new Set()
 ): IThemedToken[][] {
   let lines = fileContents.split(/\r\n|\r|\n/)
 
@@ -41,6 +42,16 @@ export function tokenizeWithTheme(
       actual = []
       final.push([])
       continue
+    }
+
+    // If this line should be ignored (e.g. it's a removed line in a diff),
+    // don't tokenize it, but do include it in the result.
+    if (ignoreLines.has(i)) {
+      actual.push({
+        content: line,
+        color: '',
+        explanation: []
+      })
     }
 
     let resultWithScopes = grammar.tokenizeLine(line, ruleStack)

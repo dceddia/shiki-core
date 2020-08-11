@@ -8,3 +8,4 @@ export interface HtmlRendererOptions {
     debugColors?: boolean;
 }
 export declare function renderToHtml(lines: IThemedToken[][], options?: HtmlRendererOptions): string;
+export declare function makeHighlightSet(highlightLines?: (string | number)[]): Set<number>;

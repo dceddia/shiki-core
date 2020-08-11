@@ -5,8 +5,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tokenizeWithTheme = void 0;
 var stackElementMetadata_1 = require("./stackElementMetadata");
-function tokenizeWithTheme(theme, colorMap, fileContents, grammar, includeExplanations) {
+function tokenizeWithTheme(theme, colorMap, fileContents, grammar, includeExplanations, ignoreLines) {
     if (includeExplanations === void 0) { includeExplanations = true; }
+    if (ignoreLines === void 0) { ignoreLines = new Set(); }
     var lines = fileContents.split(/\r\n|\r|\n/);
     var ruleStack = null;
     var actual = [];
@@ -17,6 +18,15 @@ function tokenizeWithTheme(theme, colorMap, fileContents, grammar, includeExplan
             actual = [];
             final.push([]);
             continue;
+        }
+        // If this line should be ignored (e.g. it's a removed line in a diff),
+        // don't tokenize it, but do include it in the result.
+        if (ignoreLines.has(i)) {
+            actual.push({
+                content: line,
+                color: '',
+                explanation: []
+            });
         }
         var resultWithScopes = grammar.tokenizeLine(line, ruleStack);
         var tokensWithScopes = resultWithScopes.tokens;
