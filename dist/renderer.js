@@ -5,17 +5,35 @@ function renderToHtml(lines, options) {
     if (options === void 0) { options = {}; }
     var bg = options.bg || '#fff';
     var highlightedLines = makeHighlightSet(options.highlightLines);
+    var addLines = makeHighlightSet(options.addLines);
+    var deleteLines = makeHighlightSet(options.deleteLines);
     var html = '';
     var className = 'shiki';
     if (highlightedLines.size) {
         className += ' highlighted';
     }
+    if (addLines.size) {
+        className += ' added';
+    }
+    if (deleteLines.size) {
+        className += ' deleted';
+    }
     html += "<pre class=\"" + className + "\" style=\"background-color: " + bg + "\" data-language=\"" + options.langId + "\">";
     html += "<code>";
     lines.forEach(function (l, index) {
         var lineNo = index + 1;
+        var isHighlighted = false;
         if (highlightedLines.has(lineNo)) {
             html += "<span class=\"hl\">";
+            isHighlighted = true;
+        }
+        if (addLines.has(lineNo)) {
+            html += "<span class=\"add\">";
+            isHighlighted = true;
+        }
+        if (deleteLines.has(lineNo)) {
+            html += "<span class=\"del\">";
+            isHighlighted = true;
         }
         if (l.length > 0) {
             l.forEach(function (token) {
@@ -38,7 +56,7 @@ function renderToHtml(lines, options) {
                 html += "<span style=\"color: " + token.color + "\"" + debugInfo + ">" + escapeHtml(token.content) + "</span>";
             });
         }
-        if (highlightedLines.has(lineNo)) {
+        if (isHighlighted) {
             // Newline goes before the close, so that display:block on the line will work
             html += "\n</span>";
         }

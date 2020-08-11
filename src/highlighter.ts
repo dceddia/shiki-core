@@ -23,6 +23,8 @@ export interface HighlighterOptions {
 export interface HtmlOptions {
   // Pass an array of lines and line ranges (strikes like "4-18")
   highlightLines?: (string | number)[]
+  addLines?: (string | number)[]
+  deleteLines?: (string | number)[]
   // When debugColors is true, include token scope info in the HTML as data attributes
   debugColors?: boolean
 }
@@ -113,6 +115,8 @@ class Shiki {
           langId: lang,
           bg: this._theme.bg,
           highlightLines: options?.highlightLines,
+          addLines: options?.addLines,
+          deleteLines: options?.deleteLines,
           debugColors: options?.debugColors
         })
       }

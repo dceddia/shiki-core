@@ -137,6 +137,8 @@ var Shiki = /** @class */ (function () {
                                         langId: lang,
                                         bg: _this._theme.bg,
                                         highlightLines: options === null || options === void 0 ? void 0 : options.highlightLines,
+                                        addLines: options === null || options === void 0 ? void 0 : options.addLines,
+                                        deleteLines: options === null || options === void 0 ? void 0 : options.deleteLines,
                                         debugColors: options === null || options === void 0 ? void 0 : options.debugColors
                                     });
                                 }

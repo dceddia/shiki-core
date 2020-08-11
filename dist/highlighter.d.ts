@@ -7,6 +7,8 @@ export interface HighlighterOptions {
 }
 export interface HtmlOptions {
     highlightLines?: (string | number)[];
+    addLines?: (string | number)[];
+    deleteLines?: (string | number)[];
     debugColors?: boolean;
 }
 export declare function getHighlighter(options: HighlighterOptions): Promise<Highlighter>;

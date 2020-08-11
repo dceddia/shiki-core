@@ -4,17 +4,27 @@ export interface HtmlRendererOptions {
   langId?: string
   bg?: string
   highlightLines?: (string | number)[]
+  addLines?: (string | number)[]
+  deleteLines?: (string | number)[]
   debugColors?: boolean
 }
 
 export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptions = {}) {
   const bg = options.bg || '#fff'
   const highlightedLines = makeHighlightSet(options.highlightLines)
+  const addLines = makeHighlightSet(options.addLines)
+  const deleteLines = makeHighlightSet(options.deleteLines)
 
   let html = ''
   let className = 'shiki'
   if (highlightedLines.size) {
     className += ' highlighted'
+  }
+  if (addLines.size) {
+    className += ' added'
+  }
+  if (deleteLines.size) {
+    className += ' deleted'
   }
 
   html += `<pre class="${className}" style="background-color: ${bg}" data-language="${options.langId}">`
@@ -22,8 +32,18 @@ export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptio
 
   lines.forEach((l: any[], index: number) => {
     const lineNo = index + 1
+    let isHighlighted = false
     if (highlightedLines.has(lineNo)) {
       html += `<span class="hl">`
+      isHighlighted = true
+    }
+    if (addLines.has(lineNo)) {
+      html += `<span class="add">`
+      isHighlighted = true
+    }
+    if (deleteLines.has(lineNo)) {
+      html += `<span class="del">`
+      isHighlighted = true
     }
 
     if (l.length > 0) {
@@ -50,7 +70,7 @@ export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptio
       })
     }
 
-    if (highlightedLines.has(lineNo)) {
+    if (isHighlighted) {
       // Newline goes before the close, so that display:block on the line will work
       html += `\n</span>`
     } else {
