@@ -4,9 +4,11 @@ exports.makeHighlightSet = exports.renderToHtml = void 0;
 function renderToHtml(lines, options) {
     if (options === void 0) { options = {}; }
     var bg = options.bg || '#fff';
+    var fg = options.fg || '#000';
     var highlightedLines = makeHighlightSet(options.highlightLines);
     var addLines = makeHighlightSet(options.addLines);
     var deleteLines = makeHighlightSet(options.deleteLines);
+    var focusLines = makeHighlightSet(options.focusLines);
     var html = '';
     var className = 'shiki';
     if (highlightedLines.size) {
@@ -18,22 +20,28 @@ function renderToHtml(lines, options) {
     if (deleteLines.size) {
         className += ' deleted';
     }
-    html += "<pre class=\"" + className + "\" style=\"background-color: " + bg + "\" data-language=\"" + options.langId + "\">";
+    if (focusLines.size) {
+        className += ' has-focus';
+    }
+    html += "<pre class=\"" + className + "\" style=\"background-color: " + bg + "; color: " + fg + "\" data-language=\"" + options.langId + "\">";
     html += "<code>";
     lines.forEach(function (l, index) {
         var lineNo = index + 1;
-        var isHighlighted = false;
+        var highlightClasses = '';
         if (highlightedLines.has(lineNo)) {
-            html += "<span class=\"hl\">";
-            isHighlighted = true;
+            highlightClasses += ' hl';
         }
         if (addLines.has(lineNo)) {
-            html += "<span class=\"add\">";
-            isHighlighted = true;
+            highlightClasses += ' add';
         }
         if (deleteLines.has(lineNo)) {
-            html += "<span class=\"del\">";
-            isHighlighted = true;
+            highlightClasses += ' del';
+        }
+        if (focusLines.has(lineNo)) {
+            highlightClasses += ' foc';
+        }
+        if (highlightClasses) {
+            html += "<span class=\"" + highlightClasses.trim() + "\">";
         }
         if (l.length > 0) {
             l.forEach(function (token) {
@@ -56,7 +64,7 @@ function renderToHtml(lines, options) {
                 html += "<span style=\"color: " + token.color + "\"" + debugInfo + ">" + escapeHtml(token.content) + "</span>";
             });
         }
-        if (isHighlighted) {
+        if (highlightClasses) {
             // Newline goes before the close, so that display:block on the line will work
             html += "\n</span>";
         }

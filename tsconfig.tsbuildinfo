@@ -177,18 +177,18 @@
         "affectsGlobalScope": false
       },
       "./src/themedtokenizer.ts": {
-        "version": "f923f815bade5b0eb7c723ed4fe3cce9f1b98a80e5edd71c2f42dd115fcd9017",
+        "version": "caa6dc29c7cdb781123e4c3975839dbbd485a916b97dec6bbef054e7bdf49467",
         "signature": "b986602e901e2d05932cccb7193a4b87b04638c0cdd961de8b14c48fa6ae482e",
         "affectsGlobalScope": false
       },
       "./src/renderer.ts": {
-        "version": "799bbead644b03816c82f693075ae2fc9546ddee6b6fe9ce32ecb8f6e5dbc507",
-        "signature": "d54b939e6bcb3d09167ab8701d550871347f059a1c67c98a45b13399b078f2f1",
+        "version": "85319c08a987679f46efa60391ce9c9b4cd5239a253c0fe2544dd3750015f599",
+        "signature": "0fb5e26b67c0a2a00c4e81563f24854e48cd299248b990416645aa17a9881b10",
         "affectsGlobalScope": false
       },
       "../themes/dist/loadtheme.d.ts": {
-        "version": "08f140e194979617cca4da94ef81cdc6f675641b0fa0bfc60c1d35ef1dbf2638",
-        "signature": "08f140e194979617cca4da94ef81cdc6f675641b0fa0bfc60c1d35ef1dbf2638",
+        "version": "344144bf66ce9c884aba7ab535ad9c21368f3b2669f7b50b4ae421e8c519a536",
+        "signature": "344144bf66ce9c884aba7ab535ad9c21368f3b2669f7b50b4ae421e8c519a536",
         "affectsGlobalScope": false
       },
       "../themes/dist/types.d.ts": {
@@ -202,8 +202,8 @@
         "affectsGlobalScope": false
       },
       "./src/highlighter.ts": {
-        "version": "f9bbaa3814b4b0f52f8898c985e072ceec8ec8c397c9bb461f628a59aa3adf0e",
-        "signature": "a08e531d060ae25affe215c077086d0b4cab180e9c5fe32f6eeff54ef303f6f0",
+        "version": "70cfe81d853f0c1298bd944302e866369a7ad0fc5889e3983873376b81525425",
+        "signature": "6f7eb9d4f350a404c17ba538c9abd28ecdf9eb57f1df5c2cb03894375163120b",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -633,6 +633,7 @@
       "composite": true,
       "rootDir": "./src",
       "outDir": "./dist",
+      "watch": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

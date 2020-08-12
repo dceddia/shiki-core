@@ -46,12 +46,16 @@ export function tokenizeWithTheme(
 
     // If this line should be ignored (e.g. it's a removed line in a diff),
     // don't tokenize it, but do include it in the result.
-    if (ignoreLines.has(i)) {
-      actual.push({
-        content: line,
-        color: '',
-        explanation: []
-      })
+    // Also - ignoreLines is 1-based
+    if (ignoreLines.has(i + 1)) {
+      final.push([
+        {
+          content: line,
+          color: '',
+          explanation: []
+        }
+      ])
+      continue
     }
 
     let resultWithScopes = grammar.tokenizeLine(line, ruleStack)

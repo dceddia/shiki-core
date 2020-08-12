@@ -126,7 +126,8 @@ var Shiki = /** @class */ (function () {
                                 codeToHtml: function (code, lang, options) {
                                     if (isPlaintext(lang)) {
                                         return renderer_1.renderToHtml([[{ content: code }]], {
-                                            bg: _this._theme.bg
+                                            bg: _this._theme.bg,
+                                            fg: _this._theme.fg
                                         });
                                     }
                                     if (!ltog[lang]) {
@@ -138,9 +139,11 @@ var Shiki = /** @class */ (function () {
                                     return renderer_1.renderToHtml(tokens, {
                                         langId: lang,
                                         bg: _this._theme.bg,
+                                        fg: _this._theme.fg,
                                         highlightLines: options === null || options === void 0 ? void 0 : options.highlightLines,
                                         addLines: options === null || options === void 0 ? void 0 : options.addLines,
                                         deleteLines: options === null || options === void 0 ? void 0 : options.deleteLines,
+                                        focusLines: options === null || options === void 0 ? void 0 : options.focusLines,
                                         debugColors: options === null || options === void 0 ? void 0 : options.debugColors
                                     });
                                 }
